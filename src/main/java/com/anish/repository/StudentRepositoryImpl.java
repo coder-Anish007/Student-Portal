@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -30,5 +32,21 @@ public class StudentRepositoryImpl implements StudentRepository{
 		});
 	}
 	
+	@Override
+	public Student getStudentById(int id) {
+		String sql ="select * from student where id=?";
+		
+		return jt.query(sql	, new ResultSetExtractor<Student>() {
+
+			@Override
+			public Student extractData(ResultSet rs) throws SQLException, DataAccessException {
+				Student s=null;
+				if(rs.next()) {
+					s = new Student(rs.getInt(1), rs.getString(2), rs.getString(3));
+				}
+				return s;
+			}
+		},id);
+	}
 	
 }
