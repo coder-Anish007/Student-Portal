@@ -17,4 +17,8 @@ public class ServiceLayer {
 	public List<Student> gettingAllStudents(){
 		return sr.getAllStudents();
 	}
+	
+	public Student gettingStudentById(int id) {
+		return sr.getStudentById(id); 
+	} 
 }
