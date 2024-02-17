@@ -41,4 +41,17 @@ public class StudentController {
 		mnv.addObject("singleId", ids);
 		return mnv;
 	}
+	
+	// this path will redirect to the student form
+	@GetMapping(path = "/addStudent")
+	public String redirectToAddStudent() {
+		return "addStudent";
+	}
+	
+	//setting the values and on submission of form it redirects to all student page
+	@PostMapping(path = "/addStudent")
+	public String addStudent(@RequestParam("id") int id, @RequestParam("name") String name, @RequestParam("course") String course ){
+		sl.addStudent(new Student(id, name, course));
+		return "redirect:/app/allStudent";
+	}
 }
