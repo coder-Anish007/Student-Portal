@@ -21,4 +21,8 @@ public class ServiceLayer {
 	public Student gettingStudentById(int id) {
 		return sr.getStudentById(id); 
 	} 
+	
+	public Student addStudent(Student student) {
+		return sr.addStudent(student);
+	}
 }
