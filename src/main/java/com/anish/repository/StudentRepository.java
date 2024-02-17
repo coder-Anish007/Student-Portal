@@ -10,4 +10,6 @@ public interface StudentRepository {
 	public List<Student> getAllStudents();
 	
 	public Student getStudentById(int id);
+	
+	public Student addStudent(Student student);
 }
