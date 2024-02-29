@@ -46,16 +46,22 @@
 					<th scope="col">Student Id</th>
 					<th scope="col">Name</th>
 					<th scope="col">Course</th>
+					<th scope="col">Delete Record</th>
 				</tr>
 			</thead>
 
 			<c:forEach items="${StudentList}" var="student">
-
+					
+					<c:url var="deleteLink" value="delete">
+						<c:param name="id" value="${student.id }"></c:param>
+					</c:url>
 				<tbody>
 					<tr>
 						<th scope="row">${student.id }</th>
 						<td>${student.name }</td>
 						<td>${student.course}</td>
+						<td><a href="${deleteLink}"
+							onclick="if(!(confirm('Are you sure you want to delete this student?')))return false">Delete</a></td>
 					</tr>
 			</c:forEach>
 			</tbody>
