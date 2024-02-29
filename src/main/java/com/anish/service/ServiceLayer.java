@@ -25,4 +25,8 @@ public class ServiceLayer {
 	public Student addStudent(Student student) {
 		return sr.addStudent(student);
 	}
+	
+	public int deleteStudent(int id) {
+		return sr.deleteStudent(id);
+	}
 }
