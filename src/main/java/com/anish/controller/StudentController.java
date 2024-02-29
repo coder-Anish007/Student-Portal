@@ -54,4 +54,10 @@ public class StudentController {
 		sl.addStudent(new Student(id, name, course));
 		return "redirect:/app/allStudent";
 	}
+	
+	@GetMapping(path = "/delete")
+	public String deleteById(@RequestParam("id") int id) {
+		 sl.deleteStudent(id);
+		return "forward:/app/allStudent";
+	}
 }
