@@ -69,4 +69,9 @@ public class StudentRepositoryImpl implements StudentRepository{
 		 return null ;
 	}
 	
+	@Override
+	public int deleteStudent(int id) {
+		String sql = "delete from student where id=?";
+		return jt.update(sql, id);
+	}
 }

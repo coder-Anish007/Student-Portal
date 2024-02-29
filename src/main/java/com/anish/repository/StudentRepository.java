@@ -12,4 +12,6 @@ public interface StudentRepository {
 	public Student getStudentById(int id);
 	
 	public Student addStudent(Student student);
+	
+	public int deleteStudent(int id);
 }
