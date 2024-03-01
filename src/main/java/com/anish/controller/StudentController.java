@@ -60,4 +60,19 @@ public class StudentController {
 		 sl.deleteStudent(id);
 		return "forward:/app/allStudent";
 	}
+	
+	@GetMapping(path = "/LoadUpdate")
+	public ModelAndView updateLoader(@RequestParam(name = "id") int id) {
+		ModelAndView mnv = new ModelAndView("updatepage");
+		Student ids = sl.gettingStudentById(id);
+		mnv.addObject("ids",ids);
+		return mnv;
+	}
+	
+	@PostMapping(path = "/update")
+	public String updateStudent( @RequestParam("ids") int id, @RequestParam("name") String name, @RequestParam("course") String course) {
+		System.out.println(name);
+		sl.updateStudent(new Student(id,name,course));
+		return "redirect:/app/allStudent";
+	}
 }
