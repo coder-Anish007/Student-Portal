@@ -31,14 +31,15 @@
 
 	<div class="container-lg mt-10">
 		<h2 class="h2 p-3">Total List Of Students</h2>
-		
+
 		<!-- added a search bar to find the student -->
-		
+
 		<form action="listing" method="post" class="search">
 			<input type="text" name="id" class="p-1">
-			<button type="submit" class="btn btn-success p-1 btn-sm">Search	By Id</button>
+			<button type="submit" class="btn btn-success p-1 btn-sm">Search
+				By Id</button>
 		</form>
-		
+
 		<table
 			class="table table-dark table-bordered table-striped table-hover ">
 			<thead>
@@ -47,14 +48,19 @@
 					<th scope="col">Name</th>
 					<th scope="col">Course</th>
 					<th scope="col">Delete Record</th>
+					<th scope="col">Update Record</th>
 				</tr>
 			</thead>
 
 			<c:forEach items="${StudentList}" var="student">
-					
-					<c:url var="deleteLink" value="delete">
-						<c:param name="id" value="${student.id }"></c:param>
-					</c:url>
+
+				<c:url var="deleteLink" value="delete">
+					<c:param name="id" value="${student.id }"></c:param>
+				</c:url>
+
+				<c:url var="updateLink" value="LoadUpdate">
+					<c:param name="id" value="${student.id }"></c:param>
+				</c:url>
 				<tbody>
 					<tr>
 						<th scope="row">${student.id }</th>
@@ -62,6 +68,7 @@
 						<td>${student.course}</td>
 						<td><a href="${deleteLink}"
 							onclick="if(!(confirm('Are you sure you want to delete this student?')))return false">Delete</a></td>
+						<td><a href="${updateLink}">Update</a></td>
 					</tr>
 			</c:forEach>
 			</tbody>
