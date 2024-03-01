@@ -14,4 +14,6 @@ public interface StudentRepository {
 	public Student addStudent(Student student);
 	
 	public int deleteStudent(int id);
+	
+	public Student updateStudent(Student s);
 }

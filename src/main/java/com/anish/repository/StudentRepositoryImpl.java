@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -73,5 +74,20 @@ public class StudentRepositoryImpl implements StudentRepository{
 	public int deleteStudent(int id) {
 		String sql = "delete from student where id=?";
 		return jt.update(sql, id);
+	}
+	
+	@Override
+	public Student updateStudent(Student s) {
+		String sql = "update student set name=? ,course = ? where id=?";
+		jt.update(sql, new PreparedStatementSetter() {
+
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setString(1, s.getName());
+				ps.setString(2, s.getCourse());
+				ps.setInt(3, s.getId());
+			}
+		});
+		return null;
 	}
 }
