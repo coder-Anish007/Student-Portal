@@ -56,7 +56,7 @@ public class StudentRepositoryImpl implements StudentRepository{
 	@Override
 	public Student addStudent(Student student) {
 		String sql = "insert into student values(?,?,?)";
-		 jt.update(sql, new PreparedStatementCreator() {
+		 jt.update(new PreparedStatementCreator() {
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
